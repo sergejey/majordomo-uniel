@@ -1,0 +1,64 @@
+
+[#if SET_DATASOURCE!="1"#]
+<!-- / source select -->
+[#endif SET_DATASOURCE#]
+ <!-- action usual -->
+ [#if DATA_SOURCE="unieldevices" || DATA_SOURCE=""#]
+ <!-- table unieldevices search -->
+ [#if VIEW_MODE="search_unieldevices" || VIEW_MODE=""#]
+  [#inc unieldevices_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table unieldevices search -->
+ <!-- table unieldevices edit -->
+ [#if VIEW_MODE="edit_unieldevices"#]
+   [#if ID!=""#]
+   [#if TITLE!=""#]<h4>[#TITLE#]</h4>[#endif TITLE#]
+<ul class="nav nav-tabs">
+  <li[#if TAB=""#] class="active"[#endif#]>
+   <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab="><#LANG_GENERAL#></a>
+  </li>
+  <li[#if TAB="data"#] class="active"[#endif#]>
+   <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=data"><#LANG_DATA#></a>
+  </li>
+  <li[#if TAB="config"#] class="active"[#endif#]>
+   <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=config">Advanced</a>
+  </li>
+</ul>
+   [#endif ID#]
+   [#if TAB=""#]
+    [#inc unieldevices_edit_default.html#]
+   [#endif TAB#]
+   [#if TAB="data"#]
+    [#inc unieldevices_edit_data.html#]
+   [#endif TAB#]
+   [#if TAB="config"#]
+    [#inc unieldevices_edit_config.html#]
+   [#endif TAB#]
+ [#endif VIEW_MODE#]
+ <!-- / table unieldevices edit -->
+ <!-- table unieldevices view --> 
+ [#if VIEW_MODE="view_unieldevices"#]
+   [#if TAB=""#]
+    [#inc unieldevices_view_default.html#]
+   [#endif TAB#]
+ [#endif VIEW_MODE#]
+ <!-- / table unieldevices view -->
+ [#endif DATA_SOURCE#]
+ <!-- action usual -->
+ [#if DATA_SOURCE="unielproperties"#]
+ <!-- table unielproperties search -->
+ [#if VIEW_MODE="search_unielproperties" || VIEW_MODE=""#]
+  [#inc unielproperties_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table unielproperties search -->
+ <!-- table unielproperties edit -->
+ [#if VIEW_MODE="edit_unielproperties"#]
+   [#inc unielproperties_edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table unielproperties edit -->
+ <!-- table unielproperties view --> 
+ [#if VIEW_MODE="view_unielproperties"#]
+   [#inc unielproperties_view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table unielproperties view -->
+ [#endif DATA_SOURCE#]

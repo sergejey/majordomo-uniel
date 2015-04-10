@@ -1,0 +1,380 @@
+[#if RESULT!=""#]
+<legend>Command result</legend>
+<p>[#RESULT#]</p>
+[#endif#]
+
+&nbsp;
+<legend>Custom command</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+
+
+<div class="form-group">
+ <label class="col-lg-2 control-label"[#if ERR_CONFIG#] style="color:red;font-weight:bold"[#endif#]>
+ Send command:
+ </label>
+ <div class="col-lg-3">
+  <input type="text" name="command" value="[#COMMAND#]" class="form-control">
+  (ex: FF FF 05 01 00 0A 00 10)
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SEND#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="send_command">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+[#if TYPE=="light" || TYPE=="dimmer"#]
+<legend>Set Low Threshold</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Low Threshold:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="threshold" value="[#LOW_THRESHOLD#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_low_threshold">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+<legend>Set High Threshold</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ High Threshold:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="threshold" value="[#HIGH_THRESHOLD#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_high_threshold">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+[#endif TYPE#]
+
+[#if TYPE="automation"#]
+<legend>Set Low Threshold</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Output:
+ </label>
+ <div class="col-lg-1">
+  <select name="pin" class="form-control">
+   <option>0
+   <option>1
+   <option>2
+   <option>3
+   <option>4
+   <option>5
+   <option>6
+   <option>7
+  </select>
+ </div>
+</div>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Low Threshold:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="threshold" value="[#LOW_THRESHOLD#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_low_threshold_pin">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+<legend>Set High Threshold</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Output:
+ </label>
+ <div class="col-lg-1">
+  <select name="pin" class="form-control">
+   <option>0
+   <option>1
+   <option>2
+   <option>3
+   <option>4
+   <option>5
+   <option>6
+   <option>7
+  </select>
+ </div>
+</div>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ High Threshold:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="threshold" value="[#HIGH_THRESHOLD#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_high_threshold_pin">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+[#endif#]
+
+[#if TYPE="dimmer"#]
+<legend>Set Fading</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Fade:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="fade" value="[#FADE#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_fade">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+[#endif TYPE#]
+
+[#if TYPE="light"#]
+<legend>Set Timeout</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Output:
+ </label>
+ <div class="col-lg-1">
+  <select name="pin" class="form-control">
+   <option>0
+   <option>1
+   <option>2
+   <option>3
+   <option>4
+   <option>5
+   <option>6
+   <option>7
+  </select>
+ </div>
+</div>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Timeout (0-255):
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="timeout" value="[#TIMEOUT#]" class="form-control">
+ </div>
+</div>
+
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_timeout">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+<legend>Set Input type</legend>
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Input:
+ </label>
+ <div class="col-lg-1">
+  <select name="pin" class="form-control">
+   <option>0
+   <option>1
+   <option>2
+   <option>3
+   <option>4
+   <option>5
+   <option>6
+   <option>7
+  </select>
+ </div>
+</div>
+
+<div class="form-group">
+ <label class="col-lg-2 control-label">
+ Type:
+ </label>
+ <div class="col-lg-1">
+  <select name="type" class="form-control">
+   <option value="0">SW (button)
+   <option value="255">MS (motion sensor)
+  </select>  
+ </div>
+</div>
+
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_type">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+[#endif TYPE#]
+
+<legend>Address change</legend>
+
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary">Set address broadcast mode</button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_address_broadcast">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<div class="form-group">
+ <label class="col-lg-2 control-label"[#if ERR_CONFIG#] style="color:red;font-weight:bold"[#endif#]>
+ Set new address:
+ </label>
+ <div class="col-lg-1">
+  <input type="text" name="address" value="[#ADDRESS#]" class="form-control">
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-1 col-lg-2">
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="set_address">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+
+<!--#
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+[#if OK#]
+<div class="alert alert-success">Data has been saved</div>
+[#endif OK#]
+[#if ERR#]
+<div class="alert alert-error">Please fill out all required fields</div>
+[#endif ERR#]
+<fieldset>
+[#if ID=""#]
+<legend>New Record</legend>
+[#endif ID#]
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_CONFIG#] style="color:red;font-weight:bold"[#endif#]>
+ CONFIG
+ :
+ </label>
+ <div class="col-lg-4">
+ <textarea name="config" rows=12 cols=100 class="form-control">[#CONFIG#]</textarea>
+ </div>
+</div>
+<div class="form-group">
+        <div class="col-lg-offset-3 col-lg-4">
+ [#if ID!=""#]
+ <button type="submit" name="subm" value="Submit" class="btn btn-primary">Submit</button>
+ [#else ID#]
+ <button type="submit" name="subm" value="Add" class="btn btn-primary">Add</button>
+ [#endif ID#]
+ <a href="?data_source=<#DATA_SOURCE#>" class="btn btn-default ">Cancel</a>
+<input type="hidden" name="id" value="<#ID#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+<input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+<input type="hidden" name="mode" value="update">
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="tab" value="<#TAB#>">
+        </div>
+</div>
+</fieldset>
+</form>
+#-->
