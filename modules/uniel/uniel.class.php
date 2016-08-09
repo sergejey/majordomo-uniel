@@ -455,7 +455,7 @@ function binaryToString($buf) {
 *
 * @access private
 */
- function dbInstall() {
+ function dbInstall($data) {
 /*
 unieldevices - Uniel Devices
 unielproperties - Uniel Properties
