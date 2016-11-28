@@ -364,7 +364,7 @@ function usual(&$out) {
   $channel=$prop['NUM'];
   $device=SQLSelectOne("SELECT TYPE FROM unieldevices WHERE ID='".$prop['DEVICE_ID']."'");
 
-  if ($device['TYPE']=='light' || $device['TYPE']=='automation') {
+  if ($device['TYPE']=='light') {
    if ($value>0) {
     //FF FF 06 01 FF 12 00 18
     $this->sendDeviceCommand($prop['DEVICE_ID'], 0x06, array(0xff, 0x12+(int)$prop['NUM'], 0x00));
@@ -372,7 +372,16 @@ function usual(&$out) {
     //FF FF 06 01 00 12 00 19
     $this->sendDeviceCommand($prop['DEVICE_ID'], 0x06, array(0x00, 0x12+(int)$prop['NUM'], 0x00));
    }
-  } elseif ($device['TYPE']=='dimmer') {
+   } elseif ($device['TYPE']=='automation') {
+   if ($value>0) {
+    //FF FF 06 01 FF 1a 00 18
+    $this->sendDeviceCommand($prop['DEVICE_ID'], 0x06, array(0xff, 0x1a+(int)$prop['NUM'], 0x00));
+   } else {
+    //FF FF 06 01 00 1a 00 19
+    $this->sendDeviceCommand($prop['DEVICE_ID'], 0x06, array(0x00, 0x1a+(int)$prop['NUM'], 0x00));
+   }
+   } elseif ($device['TYPE']=='dimmer') {
+
    //FF FF 0A 01 11 00 00 1C
    $this->sendDeviceCommand($prop['DEVICE_ID'], 0x0a, array((int)$value, 0x00+(int)$prop['NUM'], 0x00));
   }
@@ -455,7 +464,7 @@ function binaryToString($buf) {
 *
 * @access private
 */
- function dbInstall($data) {
+ function dbInstall() {
 /*
 unieldevices - Uniel Devices
 unielproperties - Uniel Properties
