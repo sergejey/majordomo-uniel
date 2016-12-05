@@ -215,13 +215,19 @@ function usual(&$out) {
    }
   }
 
-   //check outputs
    $outputs=SQLSelect("SELECT * FROM unielproperties WHERE DEVICE_ID='".$rec['ID']."' AND TYPE=1 ORDER BY NUM");
    $result=$this->sendDeviceCommand($rec['ID'], 0x0b, array(0x00, 0x00, 0x00));
    if (isset($result[4])) {
-    $value=decbin($result[4]);
+    //$value=decbin($result[4]);
     //print_r($result);
     //echo $value."<br/>";
+    $ret = decbin($result[4]); 
+    while(strlen($ret) < 8)
+        {
+         $ret = "0".$ret;
+        }  
+    $value = array_reverse(str_split($ret));
+
     $total=count($outputs);
     for($i=0;$i<$total;$i++) {
      $old_value=$outputs[$i]['CURRENT_VALUE'];
@@ -232,7 +238,7 @@ function usual(&$out) {
        $outputs[$i]['CURRENT_VALUE']=$level;
       }
      } else {
-      $outputs[$i]['CURRENT_VALUE']=(int)$value[(int)$outputs[$i]['NUM']];
+      $outputs[$i]['CURRENT_VALUE']=$value[$i];//(int)$value[(int)$outputs[$i]['NUM']];
      }
      SQLUpdate('unielproperties', $outputs[$i]);
 
@@ -242,9 +248,8 @@ function usual(&$out) {
       setGlobal($outputs[$i]['LINKED_OBJECT'].'.'.$outputs[$i]['LINKED_PROPERTY'], $outputs[$i]['CURRENT_VALUE'], array($this->name=>'0'));
      }
 
-
-    }
    }
+  }
 
  }
 
